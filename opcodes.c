@@ -39,9 +39,24 @@ void op_pall(stack_t **stack, unsigned int line_number)
     }
 }
 
-void op_pop(stack_t **stack, unsigned int line_number)
+/**
+ * op_pint - Prints the value at the top of the stack
+ * @stack: Double pointer to the head of the stack
+ * @line_number: The line number currently being executed
+ *
+ * Description: Prints the value at the top of the stack, followed by a new line.
+ * If the stack is empty, prints an error message to stderr and exits with a
+ * status of EXIT_FAILURE.
+ */
+void op_pint(stack_t **stack, unsigned int line_number)
 {
-    pop_stack(stack, line_number);
+    if (*stack == NULL)
+    {
+        fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
+        exit(EXIT_FAILURE);
+    }
+
+    printf("%d\n", (*stack)->n);
 }
 
 bool is_valid_integer(char *str)

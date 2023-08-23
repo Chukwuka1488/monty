@@ -15,8 +15,8 @@ int main(int argc, char *argv[])
 	char *line = malloc(BUFFER_SIZE);
 	unsigned int line_number = 0;
 
-    if (argc != 2)
-    {
+	if (argc != 2)
+	{
         fprintf(stderr, "USAGE: %s file\n", argv[0]);
         return EXIT_FAILURE;
     }
@@ -45,6 +45,10 @@ int main(int argc, char *argv[])
             {
                 op_pall(&stack, line_number);
             }
+		    else if (strcmp(opcode, "pint") == 0)
+		    {
+        		op_pint(&stack, line_number);
+    		}
             else
             {
                 fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
