@@ -51,9 +51,9 @@ void op_pall(stack_t **stack, unsigned int line_number);
 bool is_valid_integer(char *str);
 void op_pint(stack_t **stack, unsigned int line_number);
 void op_pop(stack_t **stack, unsigned int line_number);
+void op_add(stack_t **stack, unsigned int line_number);
+void op_swap(stack_t **stack, unsigned int line_number);
 
-
-/* Add more opcode functions here as needed */
 
 /* stack_operations.c */
 void push_stack(stack_t **stack, int value);

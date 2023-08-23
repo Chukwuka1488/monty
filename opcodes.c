@@ -78,6 +78,55 @@ void op_pop(stack_t **stack, unsigned int line_number)
     pop_stack(stack, line_number);
 }
 
+/**
+ * op_swap - Swaps the top two elements of the stack
+ * @stack: Double pointer to the head of the stack
+ * @line_number: The line number currently being executed
+ *
+ * Description: Swaps the top two elements of the stack. If the stack contains
+ * less than two elements, prints an error message to stderr and exits with a
+ * status of EXIT_FAILURE.
+ */
+void op_swap(stack_t **stack, unsigned int line_number)
+{
+    int temp;
+
+    if (*stack == NULL || (*stack)->next == NULL)
+    {
+        fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
+        exit(EXIT_FAILURE);
+    }
+
+    temp = (*stack)->n;
+    (*stack)->n = (*stack)->next->n;
+    (*stack)->next->n = temp;
+}
+
+/**
+ * op_add - Adds the top two elements of the stack
+ * @stack: Double pointer to the head of the stack
+ * @line_number: The line number currently being executed
+ *
+ * Description: Adds the top two elements of the stack. If the stack contains
+ * less than two elements, prints an error message to stderr and exits with a
+ * status of EXIT_FAILURE. The result is stored in the second top element of
+ * the stack and the top element is removed.
+ */
+void op_add(stack_t **stack, unsigned int line_number)
+{
+    int sum;
+
+    if (*stack == NULL || (*stack)->next == NULL)
+    {
+        fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
+        exit(EXIT_FAILURE);
+    }
+
+    sum = (*stack)->n + (*stack)->next->n;
+    pop_stack(stack, line_number);
+    (*stack)->n = sum;
+}
+
 bool is_valid_integer(char *str)
 {
     if (*str == '-' || *str == '+')
