@@ -127,20 +127,44 @@ void op_add(stack_t **stack, unsigned int line_number)
     (*stack)->n = sum;
 }
 
+/**
+ * op_nop - Does nothing
+ * @stack: Double pointer to the head of the stack
+ * @line_number: The line number currently being executed
+ *
+ * Description: Does nothing.
+ */
+void op_nop(stack_t **stack, unsigned int line_number)
+{
+    (void)stack;
+    (void)line_number;
+}
+
+/**
+ * is_valid_integer - Checks if a string represents a valid integer
+ * @str: The string to check
+ *
+ * Return: true if the string represents a valid integer, otherwise false
+ *
+ * Description: Checks if a given string represents a valid integer. A string
+ * is considered to represent a valid integer if it consists only of digits,
+ * with an optional leading '+' or '-' sign.
+ */
 bool is_valid_integer(char *str)
 {
     if (*str == '-' || *str == '+')
         str++;
 
     if (*str == '\0')
-        return false;
+        return (false);
 
     while (*str != '\0')
     {
         if (!isdigit(*str))
-            return false;
+            return (false);
         str++;
     }
 
-    return true;
+    return (true);
 }
+

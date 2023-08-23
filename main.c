@@ -1,6 +1,4 @@
 #include "monty.h"
-#define BUFFER_SIZE 1024
-#include <stdio.h>
 
 /**
  * main - Entry point for the Monty interpreter
@@ -18,14 +16,14 @@ int main(int argc, char *argv[])
 	if (argc != 2)
 	{
         fprintf(stderr, "USAGE: %s file\n", argv[0]);
-        return EXIT_FAILURE;
+        return (EXIT_FAILURE);
     }
 
 	file = fopen(argv[1], "r");
     if (!file)
     {
         fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-        return EXIT_FAILURE;
+        return (EXIT_FAILURE);
     }
 
     while (fgets(line, BUFFER_SIZE, file) != NULL)
@@ -61,6 +59,10 @@ int main(int argc, char *argv[])
             {
                 op_add(&stack, line_number);
             }
+            else if (strcmp(opcode, "nop") == 0) /* New else if statement for nop opcode */
+            {
+                op_nop(&stack, line_number);
+            }            
 			else
             {
                 fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
@@ -77,5 +79,5 @@ int main(int argc, char *argv[])
     free_stack(&stack);
 	free(line);
 
-    return EXIT_SUCCESS;
+    return (EXIT_SUCCESS);
 }
