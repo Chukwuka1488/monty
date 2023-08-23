@@ -53,10 +53,14 @@ int main(int argc, char *argv[])
 		    {
         		op_pint(&stack, line_number);
     		}
-		    else if (strcmp(opcode, "swap") == 0) /* New else if statement for swap opcode */
+		    else if (strcmp(opcode, "swap") == 0)
     		{
-            op_swap(&stack, line_number);
-    }
+                op_swap(&stack, line_number);
+            }
+            else if (strcmp(opcode, "add") == 0) /* New else if statement for add opcode */
+            {
+                op_add(&stack, line_number);
+            }
 			else
             {
                 fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);

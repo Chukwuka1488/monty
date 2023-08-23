@@ -144,4 +144,3 @@ bool is_valid_integer(char *str)
 
     return true;
 }
-
