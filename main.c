@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
         line_number++;
         opcode = strtok(line, " \t\n");
 
-        if (opcode != NULL)
+        if (opcode != NULL && opcode[0] != '#')
         {
             if (strcmp(opcode, "push") == 0)
             {
@@ -55,17 +55,53 @@ int main(int argc, char *argv[])
     		{
                 op_swap(&stack, line_number);
             }
-            else if (strcmp(opcode, "add") == 0) /* New else if statement for add opcode */
+            else if (strcmp(opcode, "add") == 0)
             {
                 op_add(&stack, line_number);
             }
-            else if (strcmp(opcode, "nop") == 0) /* New else if statement for nop opcode */
+            else if (strcmp(opcode, "nop") == 0)
             {
                 op_nop(&stack, line_number);
             }
-            else if (strcmp(opcode, "sub") == 0) /* New else if statement for sub opcode */
+            else if (strcmp(opcode, "sub") == 0)
             {
                 op_sub(&stack, line_number);
+            }
+            else if (strcmp(opcode, "div") == 0)
+            {
+                op_div(&stack, line_number);
+            }
+            else if (strcmp(opcode, "mul") == 0)
+            {
+                op_mul(&stack, line_number);
+            }
+            else if (strcmp(opcode, "mod") == 0)
+            {
+                op_mod(&stack, line_number);
+            }
+            else if (strcmp(opcode, "pchar") == 0)
+            {
+                op_pchar(&stack, line_number);
+            }
+            else if (strcmp(opcode, "pstr") == 0)
+            {
+                op_pstr(&stack, line_number);
+            }
+            else if (strcmp(opcode, "rotl") == 0) /* New else if statement for rotl opcode */
+            {
+                op_rotl(&stack, line_number);
+            }
+            else if (strcmp(opcode, "rotr") == 0) /* New else if statement for rotr opcode */
+            {
+                op_rotr(&stack, line_number);
+            }
+            else if (strcmp(opcode, "stack") == 0) /* New else if statement for stack opcode */
+            {
+                op_stack(&stack, line_number);
+            }   
+            else if (strcmp(opcode, "queue") == 0) /* New else if statement for queue opcode */
+            {
+                op_queue(&stack, line_number);
             }            
 			else
             {
