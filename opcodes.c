@@ -141,6 +141,32 @@ void op_nop(stack_t **stack, unsigned int line_number)
 }
 
 /**
+ * op_sub - Subtracts the top element of the stack from the second top element
+ * @stack: Double pointer to the head of the stack
+ * @line_number: The line number currently being executed
+ *
+ * Description: Subtracts the top element of the stack from the second top
+ * element of the stack. If the stack contains less than two elements, prints
+ * an error message to stderr and exits with a status of EXIT_FAILURE. The
+ * result is stored in the second top element of the stack and the top element
+ * is removed.
+ */
+void op_sub(stack_t **stack, unsigned int line_number)
+{
+    int difference;
+
+    if (*stack == NULL || (*stack)->next == NULL)
+    {
+        fprintf(stderr, "L%u: can't sub, stack too short\n", line_number);
+        exit(EXIT_FAILURE);
+    }
+
+    difference = (*stack)->next->n - (*stack)->n;
+    pop_stack(stack, line_number);
+    (*stack)->n = difference;
+}
+
+/**
  * is_valid_integer - Checks if a string represents a valid integer
  * @str: The string to check
  *

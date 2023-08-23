@@ -62,6 +62,10 @@ int main(int argc, char *argv[])
             else if (strcmp(opcode, "nop") == 0) /* New else if statement for nop opcode */
             {
                 op_nop(&stack, line_number);
+            }
+            else if (strcmp(opcode, "sub") == 0) /* New else if statement for sub opcode */
+            {
+                op_sub(&stack, line_number);
             }            
 			else
             {

@@ -55,6 +55,7 @@ void op_pop(stack_t **stack, unsigned int line_number);
 void op_add(stack_t **stack, unsigned int line_number);
 void op_swap(stack_t **stack, unsigned int line_number);
 void op_nop(stack_t **stack, unsigned int line_number);
+void op_sub(stack_t **stack, unsigned int line_number);
 
 /* stack_operations.c */
 void push_stack(stack_t **stack, int value);
